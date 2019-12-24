@@ -23,7 +23,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib-common')
-                implementation 'net.freshclouds:rx-proxy:0.0.1'
+                api 'net.freshclouds:rx-proxy:0.0.1'
 //                implementation 'io.ktor:ktor-client-core:1.2.6'
 //                implementation 'io.ktor:ktor-client-json:1.2.6'
 //                implementation 'io.ktor:ktor-client-gson:1.2.6'
@@ -39,7 +39,7 @@ kotlin {
         jvmMain {
             dependencies {
                 implementation kotlin('stdlib')
-                implementation 'net.freshclouds:rx-proxy-jvm:0.0.1'
+                api 'net.freshclouds:rx-proxy-jvm:0.0.1'
             }
         }
         jvmTest {
