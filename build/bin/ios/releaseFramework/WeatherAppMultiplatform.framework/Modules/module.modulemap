@@ -1,6 +1,0 @@
-framework module WeatherAppMultiplatform {
-    umbrella header "WeatherAppMultiplatform.h"
-
-    export *
-    module * { export * }
-}
