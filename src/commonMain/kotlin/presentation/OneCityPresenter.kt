@@ -1,12 +1,13 @@
 package presentation
 
 import domain.weather.useCase.ObserveCurrentWeatherForACityUseCase
-import rx.Rx
 import rxProxy.Disposable
+import rxProxy.factories.RxFactories
 
 class OneCityPresenter(
     private val view: OneCityContract.View,
-    private val observeCurrentWeatherForACityUseCase: ObserveCurrentWeatherForACityUseCase
+    private val observeCurrentWeatherForACityUseCase: ObserveCurrentWeatherForACityUseCase,
+    private val rxFactories: RxFactories
 ) : OneCityContract.Presenter{
 
     private var disposable: Disposable? = null
@@ -15,8 +16,8 @@ class OneCityPresenter(
         disposable?.dispose()
         disposable = observeCurrentWeatherForACityUseCase
             .buildUseCase(ObserveCurrentWeatherForACityUseCase.Params("cityid"))
-            .subscribeOn(Rx.factories.getSchedulerModule().io())
-            .observeOn(Rx.factories.getSchedulerModule().ui())
+            .subscribeOn(rxFactories.getSchedulerModule().io())
+            .observeOn(rxFactories.getSchedulerModule().ui())
             .subscribe({
                 view.displayCurrentTemperature(it.temperature?:0.0)
                 view.displayCurrentWeatherState(it.status?:"no data")

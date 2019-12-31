@@ -7,8 +7,8 @@ class WeatherRepoImpl: WeatherRepo {
 
     override fun getWeatherForOneCity(cityId: String): Weather {
         return Weather(
-            temperature = 32.5,
-            status = "Super Ensoleille"
+            temperature = 16.2,
+            status = "Nuageux"
         )
     }
 }
